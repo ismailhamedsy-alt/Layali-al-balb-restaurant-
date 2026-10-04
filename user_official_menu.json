@@ -1,82 +1,4 @@
-import { MenuItem, RestaurantConfig } from '../types/menu';
-import heroImg from '../assets/images/layali_albab_hero_1790708328731.jpg';
-import broastedImg from '../assets/images/broasted_crispy_1790708355370.jpg';
-import escalopeImg from '../assets/images/escalope_arabi_dish_1790755446057.jpg';
-
-export { heroImg, broastedImg, escalopeImg };
-
-// Authentic Meal Images served reliably from /images/meals/
-export const REAL_AL_DEMASHKI_IMAGES = {
-  escalopeMeal: '/images/meals/escalope_meal.jpg',
-  crispyMeal: '/images/meals/crispy_meal.jpg',
-  crispyHalf: '/images/meals/crispy_half.jpg',
-  zingerMeal: '/images/meals/zinger_meal.jpg',
-  zingerSandwich: '/images/meals/zinger_sandwich.jpg',
-  zingerSamoon: '/images/meals/zinger_samoon.jpg',
-  spicyHalf: '/images/meals/spicy_half.jpg',
-  supremeSamoon: '/images/meals/supreme_samoon.jpg',
-  burger: '/images/meals/burger.jpg',
-  shawarmaSandwich: '/images/meals/shawarma_sandwich.jpg',
-  shawarmaSamoon: '/images/meals/shawarma_samoon.jpg',
-  katubiyaShawarma: '/images/meals/katubiya_shawarma.jpg',
-  shawarmaHalfKg: '/images/meals/shawarma_half_kg.jpg',
-  shawarmaQuarterKg: '/images/meals/shawarma_quarter_kg.jpg',
-  potatoSandwich: '/images/meals/potato_sandwich.jpg',
-  potatoSamoon: '/images/meals/potato_samoon.jpg',
-  potatoExtraSamoon: '/images/meals/potato_extra_samoon.jpg',
-  friesMeal: '/images/meals/fries_meal.jpg',
-  friesLarge: '/images/meals/fries_large.jpg',
-  chickenFries: '/images/meals/chicken_fries.jpg',
-  chickenFriesLarge: '/images/meals/chicken_fries_large.jpg',
-  friedKibbeh: '/images/meals/fried_kibbeh.jpg',
-  colaLiter: '/images/meals/cola_liter.jpg',
-  kinzaCan: '/images/meals/kinza_can.jpg',
-  ayran: '/images/meals/ayran.jpg',
-  breadSamoon: '/images/meals/bread_samoon.jpg',
-};
-
-export const DEFAULT_RESTAURANT_CONFIG: RestaurantConfig = {
-  name: 'مطعم ليالي الباب',
-  subtitle: 'أشهى وجبات وسندويش السكلوب، الفاهيتا، الكريسبي، الزنجر، شاورما الدجاج واللحم في مدينة الباب',
-  city: 'مدينة الباب',
-  whatsappNumber: '352681537243',
-  secondaryPhone: '+352681537243',
-  address: 'مدينة الباب - الشارع العام',
-  openingHours: 'يومياً من 11:00 صباحاً حتى 2:00 بعد منتصف الليل',
-  usdRate: 34.5,
-  sypRate: 450,
-  deliveryFeeTRY: 10,
-  isRestaurantOpen: true,
-  freeDeliveryThresholdTRY: 0,
-  minOrderAmountTRY: 40,
-  deliveryAreas: [
-    'دوار السنتر / وسط المدينة',
-    'سوق الهال والمحلق',
-    'شارع زمزم الرئيسي',
-    'حي الكواشف الشرقي',
-    'حي الكواشف الغربي',
-    'طريق الراعي',
-    'حي الغربية / جامع فاطمة الزهراء',
-    'حي الشمالية / طريق بزاعة',
-    'حي القبلية / طريق تادف',
-    'دوار الجحجاح',
-    'منطقة المشفى الوطني',
-    'دوار الشهداء',
-    'أخرى (يرجى كتابة العنوان بالتفصيل)',
-  ],
-};
-
-export const AL_BAB_AREAS = DEFAULT_RESTAURANT_CONFIG.deliveryAreas || [];
-
-export const CATEGORIES = [
-  { id: 'all', name: 'الكل بالترتيب', icon: '🍽️' },
-  { id: 'western', name: 'وجبات وسندويش غربي', icon: '🥪' },
-  { id: 'shawarma', name: 'شاورما دجاج ولحم', icon: '🌯' },
-  { id: 'sides', name: 'بطاطا ومقبلات وصوصات', icon: '🍟' },
-  { id: 'drinks', name: 'مشروبات باردة وطاقة', icon: '🥤' },
-];
-
-export const INITIAL_MENU_ITEMS: MenuItem[] = [
+[
   {
     "id": "item-1",
     "name": "سكلوب عربي",
@@ -470,4 +392,4 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     "image": "/images/meals/cola_liter.jpg",
     "available": true
   }
-];
+]

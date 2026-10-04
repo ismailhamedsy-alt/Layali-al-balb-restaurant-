@@ -50,7 +50,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Public Menu Data
   const [menuItems, setMenuItems] = useState<MenuItem[]>(() => {
     try {
-      const saved = localStorage.getItem('layali_albab_menu_v11');
+      const saved = localStorage.getItem('layali_albab_menu_v13');
       return saved ? JSON.parse(saved) : INITIAL_MENU_ITEMS;
     } catch {
       return INITIAL_MENU_ITEMS;
@@ -59,7 +59,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const [restaurantConfig, setRestaurantConfig] = useState<RestaurantConfig>(() => {
     try {
-      const saved = localStorage.getItem('layali_albab_config_v11');
+      const saved = localStorage.getItem('layali_albab_config_v13');
       return saved ? JSON.parse(saved) : DEFAULT_RESTAURANT_CONFIG;
     } catch {
       return DEFAULT_RESTAURANT_CONFIG;
@@ -68,7 +68,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const [currency, setCurrency] = useState<Currency>(() => {
     try {
-      const saved = localStorage.getItem('layali_albab_curr_v11');
+      const saved = localStorage.getItem('layali_albab_curr_v13');
       return (saved as Currency) || 'TRY';
     } catch {
       return 'TRY';
@@ -160,7 +160,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem('layali_albab_menu_v11', JSON.stringify(menuItems));
+      localStorage.setItem('layali_albab_menu_v13', JSON.stringify(menuItems));
     } catch (e) {
       console.error(e);
     }
@@ -168,7 +168,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem('layali_albab_config_v11', JSON.stringify(restaurantConfig));
+      localStorage.setItem('layali_albab_config_v13', JSON.stringify(restaurantConfig));
     } catch (e) {
       console.error(e);
     }
@@ -176,7 +176,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem('layali_albab_curr_v11', currency);
+      localStorage.setItem('layali_albab_curr_v13', currency);
     } catch (e) {
       console.error(e);
     }
@@ -184,7 +184,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem('layali_albab_favs_v11', JSON.stringify(favorites));
+      localStorage.setItem('layali_albab_favs_v13', JSON.stringify(favorites));
     } catch (e) {
       console.error(e);
     }

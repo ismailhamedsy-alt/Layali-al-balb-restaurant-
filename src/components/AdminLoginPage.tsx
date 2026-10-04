@@ -107,9 +107,6 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onSuccess, onBac
                 {showPassword ? 'إخفاء' : 'إظهار'}
               </button>
             </div>
-            <p className="text-[11px] text-stone-500 text-center pt-1">
-              (كلمة المرور الافتراضية: <span className="font-mono text-amber-400 font-bold">123456</span> أو <span className="font-mono text-amber-400 font-bold">admin2026</span>)
-            </p>
           </div>
 
           <button

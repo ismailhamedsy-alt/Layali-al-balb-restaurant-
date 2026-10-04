@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, X, Flame, Star, Sparkles } from 'lucide-react';
+import { Search, X, Flame } from 'lucide-react';
 import { CATEGORIES } from '../data/menuData';
 import { useMenu } from '../context/MenuContext';
 
@@ -54,18 +54,6 @@ export const CategoryNav: React.FC = () => {
               }`}
             >
               جميع الوجبات
-            </button>
-            <button
-              type="button"
-              onClick={() => setSelectedDietFilter('popular')}
-              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
-                selectedDietFilter === 'popular'
-                  ? 'bg-amber-500 text-stone-950 font-bold shadow-sm'
-                  : 'text-stone-400 hover:text-stone-200'
-              }`}
-            >
-              <Star className="w-3 h-3 fill-current" />
-              <span>الأكثر طلباً</span>
             </button>
             <button
               type="button"

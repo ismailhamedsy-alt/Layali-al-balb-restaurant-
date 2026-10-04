@@ -1,12 +1,13 @@
 import React from 'react';
-import { MapPin, Phone, MessageCircle, ArrowUp, ShieldCheck } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, ArrowUp, ShieldCheck, Lock } from 'lucide-react';
 import { useMenu } from '../context/MenuContext';
 
 interface FooterProps {
   onOpenPrivacy: () => void;
+  onOpenAdmin?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenAdmin }) => {
   const { restaurantConfig } = useMenu();
 
   const scrollToTop = () => {
@@ -70,10 +71,24 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
           </button>
         </div>
 
-        {/* Bottom Bar: Privacy guarantee */}
+        {/* Bottom Bar: Privacy guarantee & Manager access */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-stone-500 text-[11px]">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <span>© {new Date().getFullYear()} {restaurantConfig.name} - مدينة الباب.</span>
+            {onOpenAdmin && (
+              <>
+                <span>•</span>
+                <button
+                  type="button"
+                  onClick={onOpenAdmin}
+                  className="flex items-center gap-1 text-stone-500 hover:text-amber-400 transition-colors cursor-pointer text-[11px]"
+                  title="بوابة إدارة المنيو والأسعار"
+                >
+                  <Lock className="w-3 h-3" />
+                  <span>لوحة الإدارة</span>
+                </button>
+              </>
+            )}
           </div>
 
           <div className="text-emerald-500/90 flex items-center gap-1.5 font-medium">

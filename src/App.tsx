@@ -3,7 +3,6 @@ import { MenuProvider, useMenu } from './context/MenuContext';
 import { CartProvider, useCart } from './context/CartContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { SpecialOffers } from './components/SpecialOffers';
 import { CategoryNav } from './components/CategoryNav';
 import { MenuItemCard } from './components/MenuItemCard';
 import { ItemCustomizerModal } from './components/ItemCustomizerModal';
@@ -136,9 +135,6 @@ const AppRouter: React.FC = () => {
       {/* Hero Banner */}
       <Hero onScrollToMenu={scrollToMenu} />
 
-      {/* Featured Special Offers & Combos */}
-      <SpecialOffers />
-
       {/* Menu Anchor & Sticky Category Tabs */}
       <div ref={menuRef}>
         <CategoryNav />
@@ -188,8 +184,11 @@ const AppRouter: React.FC = () => {
       {/* Restaurant Address & Delivery Zones in Al-Bab */}
       <RestaurantInfo />
 
-      {/* Customer Footer with Privacy Policy Link */}
-      <Footer onOpenPrivacy={() => setIsPrivacyOpen(true)} />
+      {/* Customer Footer with Privacy Policy Link & Discreet Manager Portal */}
+      <Footer
+        onOpenPrivacy={() => setIsPrivacyOpen(true)}
+        onOpenAdmin={() => navigateTo('/admin')}
+      />
 
       {/* Floating Direct WhatsApp Support */}
       <FloatingWhatsApp />
