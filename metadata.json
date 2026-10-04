@@ -1,0 +1,6 @@
+{
+  "name": "مطعم ليالي الباب - منيو الوجبات السريعة",
+  "description": "قائمة طعام ومنيو مطعم ليالي الباب للوجبات السريعة في مدينة الباب مع إمكانية إرسال الطلب المباشر عبر واتساب",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

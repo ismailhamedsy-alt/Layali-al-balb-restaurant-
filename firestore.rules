@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Public restaurant config: readable by all customers worldwide in real-time
+    match /restaurant_config/{configId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Public menu items & prices: readable by all customers in real-time
+    match /menu_items/{itemId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}

@@ -1,0 +1,207 @@
+[
+  {
+    "name": "تشكن فرايز عادي",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/111077/c1d948353f679445d028cad09e1ebe46.jpg",
+    "price": 100
+  },
+  {
+    "name": "تشكن فرايز كبير",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/111076/333b631c3cc047e4c87747bbb5e038ea.jpg",
+    "price": 180
+  },
+  {
+    "name": "صمون برغر",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/99439/49eae32d3976da5a38796c9392ac80ef.jpg",
+    "price": 10
+  },
+  {
+    "name": "وجبة زنجر",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/96457/733658562037fa69ca76615ffb057314.jpg",
+    "price": 260
+  },
+  {
+    "name": "زنجر عادي",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/96456/8c92b51b14a65f4972c85603da6c2cc3.jpg",
+    "price": 130
+  },
+  {
+    "name": "زنجر صمون",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/96455/e896353ebb433816e2e8206690ad841d.jpg",
+    "price": 160
+  },
+  {
+    "name": "مارينا مد غنم",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/93602/c1eef2f74404dd79ba3d7c76d42b015c.jpg",
+    "price": 150
+  },
+  {
+    "name": "شاورما صمون",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/88588/01d08cc9c244e9809a981d6f8baf328c.jpg",
+    "price": 110
+  },
+  {
+    "name": "كولا لتر",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/88226/d83722461e33b165cd4d5077f0931cee.jpg",
+    "price": 45
+  },
+  {
+    "name": "صمون فارغ",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/88183/f0d825e50cf3235025b9649481a31b0a.jpg",
+    "price": 15
+  },
+  {
+    "name": "كبة مقلية بالدجاج",
+    "image": "https://mevcut.co/storage/uploads/imageItem/b549dd1c47f066e7959b6ea15c04054f.jpg",
+    "price": 25
+  },
+  {
+    "name": "وجبة بطاطا فريت",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/1746/f0ffdd0d229dd77463e3b802d1503a18.jpg",
+    "price": 40
+  },
+  {
+    "name": "شاورما فرط نصف كيلو",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/3564/f9ef2ad0dff2b277270fac477aafc2bc.jpg",
+    "price": 380
+  },
+  {
+    "name": "شاورما فرط ربع كيلو",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/3565/da7c11c31ef393658534b24247124176.jpg",
+    "price": 190
+  },
+  {
+    "name": "جناح نصف كيلو",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/3566/353e916804ff03990c9ab19ce31eaa2d.jpg",
+    "price": 180
+  },
+  {
+    "name": "شيش دجاج نصف كيلو",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/3567/8fb3b947028eda7983c6a3124427c30e.jpg",
+    "price": 190
+  },
+  {
+    "name": "كباب الدجاج نصف كيلو",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/3568/e4c59aff4cabab7c7f816fbcbcbaaa3f.jpg",
+    "price": 180
+  },
+  {
+    "name": "نصف وجبة كريسبي",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/3572/489d6dd37a36f72a097f975ef871e210.jpg",
+    "price": 145
+  },
+  {
+    "name": "نصف وجبة سبايسي",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/3573/d176971a7d7f91830dcbd42355cd392d.jpg",
+    "price": 145
+  },
+  {
+    "name": "سوبريم صمون",
+    "image": "https://mevcut.co/storage/uploads/imageItem/0ebc190e9b2f5c545c3eb8313921cb48.jpg",
+    "price": 160
+  },
+  {
+    "name": "سندويش كباب دجاج دبل",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/3657/70a637acf035bd62a5bd169e4258198d.jpg",
+    "price": 100
+  },
+  {
+    "name": "سندويش شيش دبل",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/3658/7b0f6bfb2959b034a8fa1aca577c0466.jpg",
+    "price": 150
+  },
+  {
+    "name": "رز مندي نصف كيلو",
+    "image": "https://mevcut.co/storage/uploads/imageItem/92b506676de58893b722affdbf67579e.jpg",
+    "price": 50
+  },
+  {
+    "name": "فروج مع  كيلو رز",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/60723/4586ee5a877b27826f69c40da590f8e1.jpg",
+    "price": 510
+  },
+  {
+    "name": "بطاطا اكسترا صمون",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/82106/e9423805b9bea2395f9010146a12fdc5.jpg",
+    "price": 80
+  },
+  {
+    "name": "مارينا مد دجاج",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/82114/a3388d059c648013a19d28ebb399eb3e.jpg",
+    "price": 90
+  },
+  {
+    "name": "كباب غنم كيلو",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/87861/b54923c2587eed95d1f132fe0281ddb2.jpg",
+    "price": 950
+  },
+  {
+    "name": "نصف كيلو كباب غنم",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/87862/99ef11d1048502b06c8de51b9105e4ae.jpg",
+    "price": 475
+  },
+  {
+    "name": "شقق غنم كيلو",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/87863/0887e1dd10130c825a0ece250e78daf2.jpg",
+    "price": 1000
+  },
+  {
+    "name": "كيلو كستا مشوي",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/87865/f08ce48f28dca50b50302bc2f3a615d3.jpg",
+    "price": 360
+  },
+  {
+    "name": "وجبة سكلوب",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/708/43f5cb6521cd9bc97640ea3229b32c29.jpg",
+    "price": 240
+  },
+  {
+    "name": "شاورما عادي",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/724/46cb575d718ddc7af228aabf8a5c537d.jpg",
+    "price": 80
+  },
+  {
+    "name": "كتوبية شاورما",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/723/bcb763e03bd717af44a2e7f8f2cc8107.jpg",
+    "price": 30
+  },
+  {
+    "name": "بطاطا عادي",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/746/b047561f1592649ce56983e2a2a8cac6.jpg",
+    "price": 50
+  },
+  {
+    "name": "بطاطا صمون",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/748/026410cb6c134d29edcf5ca277f509b7.jpg",
+    "price": 60
+  },
+  {
+    "name": "وجبة بطاطا فريت",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/1746/f0ffdd0d229dd77463e3b802d1503a18.jpg",
+    "price": 40
+  },
+  {
+    "name": "كينزا تنك",
+    "image": "https://mevcut.co/storage/uploads/imageItem/0d79371b0789b04e03eff964165a1fc7.jpg",
+    "price": 25
+  },
+  {
+    "name": "وجبة بطاطا حجم كبير",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/716/a61d17a7afc3bd3c52c5b9d800ecb722.jpg",
+    "price": 90
+  },
+  {
+    "name": "لبن عيران",
+    "image": "https://mevcut.co/storage/uploads/imageItem/1303c41468217fb0538fe179c9bb3577.jpg",
+    "price": 15
+  },
+  {
+    "name": "وجبة كرسبي",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/703/7526c784b73f1396c293fae78dff8b88.jpg",
+    "price": 240
+  },
+  {
+    "name": "فروج مشوي",
+    "image": "https://mevcut.co/storage/uploads/MaterialImages/588/22ffe3757ad70872f6789b264c88ef1c.jpg",
+    "price": 450
+  }
+]

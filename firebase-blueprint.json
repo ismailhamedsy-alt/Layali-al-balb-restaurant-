@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "RestaurantConfig": {
+      "title": "RestaurantConfig",
+      "description": "General settings, delivery fee, and contact information for Layali Al-Bab Restaurant",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "city": { "type": "string" },
+        "whatsappNumber": { "type": "string" },
+        "secondaryPhone": { "type": "string" },
+        "address": { "type": "string" },
+        "openingHours": { "type": "string" },
+        "usdRate": { "type": "number" },
+        "sypRate": { "type": "number" },
+        "deliveryFeeTRY": { "type": "number" },
+        "isRestaurantOpen": { "type": "boolean" },
+        "closedMessage": { "type": "string" },
+        "freeDeliveryThresholdTRY": { "type": "number" },
+        "minOrderAmountTRY": { "type": "number" },
+        "deliveryAreas": { "type": "array" },
+        "announcementText": { "type": "string" }
+      },
+      "required": ["name", "whatsappNumber", "address", "deliveryFeeTRY"]
+    },
+    "MenuItem": {
+      "title": "MenuItem",
+      "description": "Menu dish or beverage item for Layali Al-Bab Restaurant",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "priceTRY": { "type": "number" },
+        "description": { "type": "string" },
+        "badge": { "type": "string" },
+        "image": { "type": "string" },
+        "available": { "type": "boolean" },
+        "sizes": { "type": "array" },
+        "extras": { "type": "array" },
+        "isSpicy": { "type": "boolean" },
+        "isPopular": { "type": "boolean" },
+        "preparationTimeMinutes": { "type": "number" }
+      },
+      "required": ["id", "name", "category", "priceTRY", "image"]
+    }
+  },
+  "firestore": {
+    "/restaurant_config/{configId}": {
+      "schema": "RestaurantConfig",
+      "description": "Live configuration for Layali Al-Bab Restaurant (delivery fee, address, phone, working status)"
+    },
+    "/menu_items/{itemId}": {
+      "schema": "MenuItem",
+      "description": "Live menu dishes and prices displayed in real-time to all customers"
+    }
+  }
+}
