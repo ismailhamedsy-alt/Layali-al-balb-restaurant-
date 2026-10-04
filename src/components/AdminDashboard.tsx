@@ -43,7 +43,7 @@ import {
   AL_BAB_AREAS,
   REAL_AL_DEMASHKI_IMAGES,
 } from '../data/menuData';
-import { formatPrice, compressImageFile } from '../utils/formatters';
+import { formatPrice, compressImageFile, resolveImageUrl } from '../utils/formatters';
 
 interface AdminDashboardProps {
   onBackToCustomerSite: () => void;
@@ -628,7 +628,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = ${JSON.stringify(menuItems, null, 
                       <div className="flex items-start gap-3">
                         <div className="relative shrink-0">
                           <img
-                            src={item.image}
+                            src={resolveImageUrl(item.image)}
                             alt={item.name}
                             referrerPolicy="no-referrer"
                             className="w-18 h-18 rounded-xl object-cover bg-stone-950 border border-stone-800"
@@ -1417,12 +1417,12 @@ const ImagePickerField: React.FC<{
       {/* Preview current selected image */}
       <div className="flex items-center gap-4 bg-stone-900/90 p-3 rounded-xl border border-stone-800">
         <img
-          src={image}
+          src={resolveImageUrl(image)}
           alt="معاينة الصورة"
           referrerPolicy="no-referrer"
           className="w-20 h-20 object-cover rounded-xl border-2 border-amber-500/40 shrink-0 bg-stone-950"
           onError={(e) => {
-            (e.target as HTMLImageElement).src = REAL_AL_DEMASHKI_IMAGES.escalopeMeal;
+            (e.target as HTMLImageElement).src = resolveImageUrl(REAL_AL_DEMASHKI_IMAGES.escalopeMeal);
           }}
         />
         <div className="flex-1 space-y-2">

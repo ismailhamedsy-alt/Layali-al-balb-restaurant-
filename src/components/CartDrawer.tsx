@@ -2,7 +2,7 @@ import React from 'react';
 import { X, Trash2, Plus, Minus, ShoppingBag, ArrowLeft, Bike, Store, Utensils, MessageCircle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useMenu } from '../context/MenuContext';
-import { formatPrice } from '../utils/formatters';
+import { formatPrice, resolveImageUrl } from '../utils/formatters';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -143,7 +143,7 @@ export const CartDrawer: React.FC = () => {
                   >
                     {/* Item Thumbnail */}
                     <img
-                      src={item.menuItem.image}
+                      src={resolveImageUrl(item.menuItem.image)}
                       alt={item.menuItem.name}
                       className="w-16 h-16 rounded-xl object-cover bg-stone-900 shrink-0"
                     />

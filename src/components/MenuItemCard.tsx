@@ -3,7 +3,7 @@ import { Heart, Plus, Flame, Star, Check, MessageCircle } from 'lucide-react';
 import { MenuItem } from '../types/menu';
 import { useMenu } from '../context/MenuContext';
 import { useCart } from '../context/CartContext';
-import { formatPrice } from '../utils/formatters';
+import { formatPrice, resolveImageUrl } from '../utils/formatters';
 import { broastedImg } from '../data/menuData';
 
 interface MenuItemCardProps {
@@ -51,14 +51,15 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
       {/* Image container with favorite button */}
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-stone-950">
         <img
-          src={item.image}
+          src={resolveImageUrl(item.image)}
           alt={item.name}
           referrerPolicy="no-referrer"
           onError={(e) => {
             // Graceful fallback to guaranteed public meal asset if any image fails
             const target = e.target as HTMLImageElement;
-            if (!target.src.includes('/images/meals/escalope_meal.jpg')) {
-              target.src = '/images/meals/escalope_meal.jpg';
+            const fallback = resolveImageUrl('/images/meals/escalope_meal.jpg');
+            if (target.src !== fallback) {
+              target.src = fallback;
             }
           }}
           className={`w-full h-full object-cover object-center transition-transform duration-500 ${

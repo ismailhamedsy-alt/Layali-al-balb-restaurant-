@@ -24,7 +24,13 @@ function checkIsAdminRoute(): boolean {
   const path = window.location.pathname.toLowerCase();
   const hash = window.location.hash.toLowerCase();
   const search = window.location.search.toLowerCase();
-  return path.startsWith('/admin') || hash.startsWith('#admin') || search.includes('admin=true') || search.includes('page=admin');
+  return (
+    path.endsWith('/admin') ||
+    path.endsWith('/admin/') ||
+    path.includes('/admin') ||
+    hash.includes('admin') ||
+    search.includes('admin')
+  );
 }
 
 const AppRouter: React.FC = () => {
@@ -61,8 +67,13 @@ const AppRouter: React.FC = () => {
     };
   }, []);
 
-  const navigateTo = (path: string) => {
-    window.history.pushState({}, '', path);
+  const navigateTo = (target: string) => {
+    if (target === '/') {
+      const base = import.meta.env.BASE_URL || './';
+      window.history.pushState({}, '', base);
+    } else {
+      window.history.pushState({}, '', target);
+    }
     setIsAdminRoute(checkIsAdminRoute());
   };
 

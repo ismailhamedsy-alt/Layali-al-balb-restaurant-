@@ -3,7 +3,7 @@ import { X, Plus, Minus, Check, Sparkles, MessageCircle } from 'lucide-react';
 import { ExtraOption, SizeOption } from '../types/menu';
 import { useCart } from '../context/CartContext';
 import { useMenu } from '../context/MenuContext';
-import { formatPrice } from '../utils/formatters';
+import { formatPrice, resolveImageUrl } from '../utils/formatters';
 import { broastedImg } from '../data/menuData';
 
 export const ItemCustomizerModal: React.FC = () => {
@@ -70,12 +70,13 @@ export const ItemCustomizerModal: React.FC = () => {
         {/* Header Image with close button */}
         <div className="relative h-48 sm:h-56 w-full bg-stone-950">
           <img
-            src={item.image}
+            src={resolveImageUrl(item.image)}
             alt={item.name}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              if (!target.src.includes('/images/meals/escalope_meal.jpg')) {
-                target.src = '/images/meals/escalope_meal.jpg';
+              const fallback = resolveImageUrl('/images/meals/escalope_meal.jpg');
+              if (target.src !== fallback) {
+                target.src = fallback;
               }
             }}
             className="w-full h-full object-cover object-center"

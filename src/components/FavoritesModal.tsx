@@ -2,7 +2,7 @@ import React from 'react';
 import { X, Heart, ShoppingBag, Plus } from 'lucide-react';
 import { useMenu } from '../context/MenuContext';
 import { useCart } from '../context/CartContext';
-import { formatPrice } from '../utils/formatters';
+import { formatPrice, resolveImageUrl } from '../utils/formatters';
 
 interface FavoritesModalProps {
   isOpen: boolean;
@@ -65,7 +65,7 @@ export const FavoritesModal: React.FC<FavoritesModalProps> = ({ isOpen, onClose 
                   className="p-3 bg-stone-950/80 rounded-2xl border border-stone-800 flex items-center justify-between gap-3 group"
                 >
                   <img
-                    src={item.image}
+                    src={resolveImageUrl(item.image)}
                     alt={item.name}
                     className="w-16 h-16 rounded-xl object-cover bg-stone-900 shrink-0"
                   />

@@ -134,3 +134,18 @@ export function compressImageFile(file: File, maxWidth = 800, quality = 0.76): P
     reader.readAsDataURL(file);
   });
 }
+
+/**
+ * Safely resolves an image path to work seamlessly in both root deployments (Vercel, local)
+ * and subpath repository deployments (GitHub Pages, e.g. /Layali-al-balb-restaurant-/).
+ */
+export function resolveImageUrl(url: string | undefined): string {
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:')) {
+    return url;
+  }
+  const base = import.meta.env.BASE_URL || './';
+  const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  return `${cleanBase}${cleanUrl}`;
+}

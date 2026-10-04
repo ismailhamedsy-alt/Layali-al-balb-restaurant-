@@ -2,7 +2,7 @@ import React from 'react';
 import { Sparkles, MessageCircle, Plus } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useMenu } from '../context/MenuContext';
-import { formatPrice } from '../utils/formatters';
+import { formatPrice, resolveImageUrl } from '../utils/formatters';
 
 export const SpecialOffers: React.FC = () => {
   const { menuItems, currency, restaurantConfig } = useMenu();
@@ -41,7 +41,7 @@ export const SpecialOffers: React.FC = () => {
             >
               <div className="flex gap-4 items-center">
                 <img
-                  src={item.image}
+                  src={resolveImageUrl(item.image)}
                   alt={item.name}
                   className="w-20 h-20 rounded-xl object-cover bg-stone-950 shrink-0 group-hover:scale-105 transition-transform"
                 />
