@@ -99,9 +99,9 @@ export function cleanPhoneNumber(phone: string): string {
 
 /**
  * Automatically compress and scale down uploaded photos from phone camera/device
- * to under 80 KB with crisp quality so they save reliably in Firestore and localStorage.
+ * to under 60 KB with crisp quality so they save reliably in Firestore and localStorage.
  */
-export function compressImageFile(file: File, maxWidth = 800, quality = 0.76): Promise<string> {
+export function compressImageFile(file: File, maxDimension = 640, quality = 0.72): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -109,9 +109,16 @@ export function compressImageFile(file: File, maxWidth = 800, quality = 0.76): P
       img.onload = () => {
         let width = img.width;
         let height = img.height;
-        if (width > maxWidth) {
-          height = Math.round((height * maxWidth) / width);
-          width = maxWidth;
+        if (width > height) {
+          if (width > maxDimension) {
+            height = Math.round((height * maxDimension) / width);
+            width = maxDimension;
+          }
+        } else {
+          if (height > maxDimension) {
+            width = Math.round((width * maxDimension) / height);
+            height = maxDimension;
+          }
         }
         const canvas = document.createElement('canvas');
         canvas.width = width;

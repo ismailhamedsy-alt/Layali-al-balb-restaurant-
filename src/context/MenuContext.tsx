@@ -32,10 +32,10 @@ interface MenuContextType {
   logoutAdmin: () => void;
   changeAdminPassword: (oldPass: string, newPass: string) => boolean;
   // Admin Menu Operations
-  updateRestaurantConfig: (cfg: Partial<RestaurantConfig>) => void;
-  addMenuItem: (item: MenuItem) => void;
-  updateMenuItem: (item: MenuItem) => void;
-  deleteMenuItem: (id: string) => void;
+  updateRestaurantConfig: (cfg: Partial<RestaurantConfig>) => Promise<boolean>;
+  addMenuItem: (item: MenuItem) => Promise<boolean>;
+  updateMenuItem: (item: MenuItem) => Promise<boolean>;
+  deleteMenuItem: (id: string) => Promise<boolean>;
   toggleItemAvailability: (id: string) => void;
   updateItemPrice: (id: string, newPriceTRY: number) => void;
   duplicateMenuItem: (id: string) => void;
@@ -191,10 +191,17 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [favorites]);
 
   const loginAdmin = (password: string): boolean => {
-    if (password === adminPassword || password === 'admin2026') {
+    const cloudPass = restaurantConfig.adminPassword;
+    const isMatch =
+      password === adminPassword ||
+      (cloudPass && password === cloudPass) ||
+      password === 'admin2026';
+
+    if (isMatch) {
       setIsAdminAuthenticated(true);
       try {
         sessionStorage.setItem('layali_albab_admin_session', 'true');
+        sessionStorage.setItem('layali_albab_admin_time', Date.now().toString());
       } catch (e) {
         console.error(e);
       }
@@ -207,19 +214,28 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsAdminAuthenticated(false);
     try {
       sessionStorage.removeItem('layali_albab_admin_session');
+      sessionStorage.removeItem('layali_albab_admin_time');
     } catch (e) {
       console.error(e);
     }
   };
 
   const changeAdminPassword = (oldPass: string, newPass: string): boolean => {
-    if (oldPass === adminPassword || oldPass === 'admin2026') {
+    const cloudPass = restaurantConfig.adminPassword;
+    const isOldValid =
+      oldPass === adminPassword ||
+      (cloudPass && oldPass === cloudPass) ||
+      oldPass === 'admin2026';
+
+    if (isOldValid) {
       setAdminPassword(newPass);
       try {
         localStorage.setItem('layali_albab_admin_pass', newPass);
       } catch (e) {
         console.error(e);
       }
+      // Also sync to cloud config so all admin devices use the updated password
+      updateRestaurantConfig({ adminPassword: newPass });
       return true;
     }
     return false;
@@ -233,33 +249,45 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const isFavorite = (id: string) => favorites.includes(id);
 
-  const updateRestaurantConfig = (cfg: Partial<RestaurantConfig>) => {
+  const updateRestaurantConfig = async (cfg: Partial<RestaurantConfig>): Promise<boolean> => {
     const updated = { ...restaurantConfig, ...cfg };
     setRestaurantConfig(updated);
-    saveRestaurantConfigToCloud(updated).catch((err) => {
+    try {
+      return await saveRestaurantConfigToCloud(updated);
+    } catch (err) {
       console.error('Failed to sync config to cloud:', err);
-    });
+      return false;
+    }
   };
 
-  const addMenuItem = (item: MenuItem) => {
+  const addMenuItem = async (item: MenuItem): Promise<boolean> => {
     setMenuItems((prev) => [item, ...prev]);
-    saveMenuItemToCloud(item).catch((err) => {
+    try {
+      return await saveMenuItemToCloud(item);
+    } catch (err) {
       console.error('Failed to save new item to cloud:', err);
-    });
+      return false;
+    }
   };
 
-  const updateMenuItem = (item: MenuItem) => {
+  const updateMenuItem = async (item: MenuItem): Promise<boolean> => {
     setMenuItems((prev) => prev.map((m) => (m.id === item.id ? item : m)));
-    saveMenuItemToCloud(item).catch((err) => {
+    try {
+      return await saveMenuItemToCloud(item);
+    } catch (err) {
       console.error('Failed to update item in cloud:', err);
-    });
+      return false;
+    }
   };
 
-  const deleteMenuItem = (id: string) => {
+  const deleteMenuItem = async (id: string): Promise<boolean> => {
     setMenuItems((prev) => prev.filter((m) => m.id !== id));
-    deleteMenuItemFromCloud(id).catch((err) => {
+    try {
+      return await deleteMenuItemFromCloud(id);
+    } catch (err) {
       console.error('Failed to delete item from cloud:', err);
-    });
+      return false;
+    }
   };
 
   const toggleItemAvailability = (id: string) => {

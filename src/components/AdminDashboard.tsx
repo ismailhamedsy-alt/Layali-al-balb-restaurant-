@@ -303,7 +303,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = ${JSON.stringify(menuItems, null, 
     }
   };
 
-  const handleCreateNewItem = (e: React.FormEvent) => {
+  const handleCreateNewItem = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newItemName || !newItemPrice) return;
 
@@ -313,14 +313,19 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = ${JSON.stringify(menuItems, null, 
       category: newItemCat,
       priceTRY: parseFloat(newItemPrice) || 0,
       description: newItemDesc.trim(),
-      badge: newItemBadge.trim() || undefined,
-      image: newItemImage,
+      badge: newItemBadge.trim() ? newItemBadge.trim() : undefined,
+      image: newItemImage.trim() || REAL_AL_DEMASHKI_IMAGES.escalopeMeal,
       available: true,
     };
 
-    addMenuItem(created);
-    setSaveSuccessMsg(`تمت إضافة الوجبة "${newItemName}" بنجاح!`);
-    setTimeout(() => setSaveSuccessMsg(null), 3000);
+    setSaveSuccessMsg('جاري إضافة الوجبة وحفظ الصورة في السحابة... ⏳');
+    const ok = await addMenuItem(created);
+    if (ok) {
+      setSaveSuccessMsg(`تمت إضافة الوجبة "${newItemName}" وحفظ صورتها بنجاح في السحابة! ✅`);
+    } else {
+      setSaveSuccessMsg(`تمت إضافة الوجبة "${newItemName}" محلياً.`);
+    }
+    setTimeout(() => setSaveSuccessMsg(null), 3500);
 
     // Reset new item form
     setNewItemName('');
@@ -899,12 +904,18 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = ${JSON.stringify(menuItems, null, 
             </div>
 
             <ItemEditorForm
+              key={activeEditingItem.id}
               item={activeEditingItem}
-              onSave={(updated) => {
-                updateMenuItem(updated);
+              onSave={async (updated) => {
+                setSaveSuccessMsg('جاري حفظ تعديل الوجبة والصورة في السحابة... ⏳');
+                const ok = await updateMenuItem(updated);
                 setActiveEditingItem(null);
-                setSaveSuccessMsg('تم حفظ تعديل الوجبة وتحديث الصورة بنجاح! ✅');
-                setTimeout(() => setSaveSuccessMsg(null), 3000);
+                if (ok) {
+                  setSaveSuccessMsg('تم حفظ تعديل الوجبة وتحديث صورتها بنجاح في السحابة! ✅');
+                } else {
+                  setSaveSuccessMsg('تم حفظ التعديل محلياً.');
+                }
+                setTimeout(() => setSaveSuccessMsg(null), 3500);
               }}
               onCancel={() => setActiveEditingItem(null)}
             />
@@ -1383,7 +1394,7 @@ const ImagePickerField: React.FC<{
     if (!file) return;
     try {
       setIsCompressing(true);
-      const compressedDataUrl = await compressImageFile(file, 800, 0.76);
+      const compressedDataUrl = await compressImageFile(file, 640, 0.72);
       onChange(compressedDataUrl);
     } catch (err) {
       console.error('Image compression failed:', err);

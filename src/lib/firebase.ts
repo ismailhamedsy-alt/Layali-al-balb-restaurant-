@@ -167,6 +167,33 @@ export function subscribeToMenuItems(
 }
 
 /**
+ * Recursively removes any undefined or invalid fields from objects before saving to Firestore.
+ * Firestore strictly rejects documents containing undefined fields.
+ */
+export function cleanForFirestore<T extends Record<string, any>>(obj: T): any {
+  if (obj === null || obj === undefined) return null;
+  if (Array.isArray(obj)) {
+    return obj
+      .filter((v) => v !== undefined)
+      .map((v) => (typeof v === 'object' && v !== null ? cleanForFirestore(v) : v));
+  }
+  if (typeof obj === 'object') {
+    const cleaned: any = {};
+    for (const [key, value] of Object.entries(obj)) {
+      if (value !== undefined) {
+        if (typeof value === 'object' && value !== null) {
+          cleaned[key] = cleanForFirestore(value);
+        } else {
+          cleaned[key] = value;
+        }
+      }
+    }
+    return cleaned;
+  }
+  return obj;
+}
+
+/**
  * Save restaurant configuration directly to cloud Firestore.
  * Triggers instant real-time updates for all customers everywhere!
  */
@@ -174,7 +201,8 @@ export async function saveRestaurantConfigToCloud(config: RestaurantConfig) {
   const fullPath = `${CONFIG_DOC_PATH}/${CONFIG_DOC_ID}`;
   try {
     const docRef = doc(db, CONFIG_DOC_PATH, CONFIG_DOC_ID);
-    await setDoc(docRef, config, { merge: true });
+    const sanitized = cleanForFirestore(config);
+    await setDoc(docRef, sanitized, { merge: true });
     return true;
   } catch (error) {
     handleFirestoreError(error, OperationType.WRITE, fullPath);
@@ -189,7 +217,8 @@ export async function saveMenuItemToCloud(item: MenuItem) {
   const fullPath = `${MENU_COLLECTION_PATH}/${item.id}`;
   try {
     const docRef = doc(db, MENU_COLLECTION_PATH, item.id);
-    await setDoc(docRef, item, { merge: true });
+    const sanitized = cleanForFirestore(item);
+    await setDoc(docRef, sanitized, { merge: true });
     return true;
   } catch (error) {
     handleFirestoreError(error, OperationType.WRITE, fullPath);

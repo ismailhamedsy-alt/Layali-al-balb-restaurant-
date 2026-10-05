@@ -7,16 +7,20 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
-    // Public restaurant config: readable by all customers worldwide in real-time
+    // Restaurant config: readable by all customers in real-time, validated on write
     match /restaurant_config/{configId} {
       allow read: if true;
-      allow write: if true;
+      allow write: if request.resource.data.name is string &&
+                      request.resource.data.whatsappNumber is string;
     }
 
-    // Public menu items & prices: readable by all customers in real-time
+    // Menu items & prices: readable by all customers in real-time, validated on write
     match /menu_items/{itemId} {
       allow read: if true;
-      allow write: if true;
+      allow create, update: if request.resource.data.name is string &&
+                               request.resource.data.priceTRY is number &&
+                               request.resource.data.category is string;
+      allow delete: if true;
     }
   }
 }

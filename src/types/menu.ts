@@ -72,6 +72,7 @@ export interface RestaurantConfig {
   minOrderAmountTRY?: number;
   deliveryAreas?: string[];
   announcementText?: string;
+  adminPassword?: string;
 }
 
 export interface SpecialOffer {
